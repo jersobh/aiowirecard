@@ -11,7 +11,7 @@ setuptools.setup(
     description="Moip API wrapper for asyncio/aiohttp",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/pypa/sampleproject",
+    url="https://github.com/jersobh/async-moip",
     packages=setuptools.find_packages(),
     classifiers=[
         "Programming Language :: Python :: 3",
