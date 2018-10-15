@@ -1,0 +1,7 @@
+README.md
+setup.py
+async_moip/__init__.py
+async_moip.egg-info/PKG-INFO
+async_moip.egg-info/SOURCES.txt
+async_moip.egg-info/dependency_links.txt
+async_moip.egg-info/top_level.txt
