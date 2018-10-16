@@ -1,6 +1,6 @@
 Metadata-Version: 2.1
 Name: async-moip
-Version: 0.0.2
+Version: 0.0.3
 Summary: Moip API wrapper for asyncio/aiohttp
 Home-page: https://github.com/jersobh/async-moip
 Author: jersobh
@@ -18,8 +18,8 @@ Description: ## async_moip
         
         async def main(request):
             moip = async_moip.Moip(environment='<production or sandbox', key='<key>', token='<token>')
-            customer = await moip.get_order('ORD-W121212121')
-            print(customer)
+            order = await moip.get_order('ORD-W121212121')
+            print(order)
             
         loop = asyncio.get_event_loop()
         loop.run_until_complete(main())
