@@ -10,8 +10,8 @@ import asyncio
 
 async def main(request):
     moip = async_moip.Moip(environment='<production or sandbox', key='<key>', token='<token>')
-    customer = await moip.get_order('ORD-W121212121')
-    print(customer)
+    order = await moip.get_order('ORD-W121212121')
+    print(order)
     
 loop = asyncio.get_event_loop()
 loop.run_until_complete(main())
