@@ -74,8 +74,6 @@ class Moip(object):
         try:
             response = await self.get('v2/orders/{0}'.format(order_id))
         except json.decoder.JSONDecodeError:
-            # patching Moip's API, as it actually returns an HTTP 200 for
-            # 'Not found'
             return False
 
         return response
@@ -93,8 +91,6 @@ class Moip(object):
         try:
             response = self.post('v2/payments/{0}/capture'.format(payment_id))
         except json.decoder.JSONDecodeError:
-            # patching Moip's API, as it actually returns an HTTP 200 for
-            # 'Not found'
             return False
 
         return response.content
@@ -103,8 +99,6 @@ class Moip(object):
         try:
             response = self.post('v2/payments/{0}/void'.format(payment_id))
         except json.decoder.JSONDecodeError:
-            # patching Moip's API, as it actually returns an HTTP 200 for
-            # 'Not found'
             return False
 
         return response.content

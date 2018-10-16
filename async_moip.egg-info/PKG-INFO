@@ -2,7 +2,7 @@ Metadata-Version: 2.1
 Name: async-moip
 Version: 0.0.1
 Summary: Moip API wrapper for asyncio/aiohttp
-Home-page: https://github.com/pypa/sampleproject
+Home-page: https://github.com/jersobh/async-moip
 Author: jersobh
 Author-email: jersobh@gmail.com
 License: UNKNOWN
