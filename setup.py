@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="async_moip",
-    version="0.0.1",
+    version="0.0.2",
     author="jersobh",
     author_email="jersobh@gmail.com",
     description="Moip API wrapper for asyncio/aiohttp",
