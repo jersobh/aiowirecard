@@ -16,7 +16,7 @@ async def main(request):
 loop = asyncio.get_event_loop()
 loop.run_until_complete(main())
 ```
-## Functions
+## Functions 
 
 ```python
 post_customer(params) # create new customer 
@@ -31,3 +31,4 @@ capture_payment(payment_id) # capture of a preauthorized payment
 void_payment(payment_id) # cancel the capture of a preauthorized payment
 account_exists(account_id) # check if account exists
 ```
+### params examples [here](https://dev.moip.com.br/page/api-reference)
