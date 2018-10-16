@@ -8,7 +8,7 @@ import async_moip
 import aiohttp
 import asyncio
 
-async def main(request):
+async def main():
     moip = async_moip.Moip(environment='<production or sandbox', key='<key>', token='<token>')
     order = await moip.get_order('ORD-W121212121')
     print(order)
