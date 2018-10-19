@@ -19,7 +19,7 @@ loop.run_until_complete(main())
 ## Functions 
 
 ```python
-post_customer(params) # create new customer 
+post_customer(parameters) # create new customer 
 get_customer(parameters) # get customer data
 post_creditcard(customer_id, parameters) # add new credit card to customer account
 delete_creditcard(creditcard_id) # delete credit card
