@@ -4,7 +4,7 @@ import asyncio
 import requests
 
 
-class Moip(object):
+class Wirecard(object):
 
     def __init__(self, environment, key, token):
         self.environment = environment

@@ -1,16 +1,16 @@
-## async_moip
-asyncio/aiohttp (Python3.5+) Moip API wrapper based on [moip](https://pypi.org/project/moip/) providing asyncronous requests.
+## aiowirecard
+Asyncio wirecard API wrapper based on [moip](https://pypi.org/project/moip/) providing asyncronous requests.
 
 ## Usage
 
 ```python
-import async_moip
+import aiowirecard
 import aiohttp
 import asyncio
 
 async def main():
-    moip = async_moip.Moip(environment='<production or sandbox', key='<key>', token='<token>')
-    order = await moip.get_order('ORD-W121212121')
+    wirecard = aiowirecard.Wirecard(environment='<production or sandbox', key='<key>', token='<token>')
+    order = wirecard.get_order('ORD-W121212121')
     print(order)
     
 loop = asyncio.get_event_loop()
@@ -19,7 +19,7 @@ loop.run_until_complete(main())
 ## Functions 
 
 ```python
-post_customer(params) # create new customer 
+post_customer(parameters) # create new customer 
 get_customer(parameters) # get customer data
 post_creditcard(customer_id, parameters) # add new credit card to customer account
 delete_creditcard(creditcard_id) # delete credit card
