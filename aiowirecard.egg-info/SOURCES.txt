@@ -1,0 +1,7 @@
+README.md
+setup.py
+aiowirecard/__init__.py
+aiowirecard.egg-info/PKG-INFO
+aiowirecard.egg-info/SOURCES.txt
+aiowirecard.egg-info/dependency_links.txt
+aiowirecard.egg-info/top_level.txt
