@@ -11,7 +11,7 @@ import asyncio
 
 async def main():
     wirecard = aiowirecard.Wirecard(environment='<production or sandbox', key='<key>', token='<token>')
-    order = wirecard.get_order('ORD-W121212121')
+    order = await wirecard.get_order('ORD-W121212121')
     print(order)
     
 loop = asyncio.get_event_loop()
