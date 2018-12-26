@@ -1,4 +1,4 @@
-## async_moip
+## aiowirecard
 asyncio/aiohttp (Python3.5+) Moip API wrapper based on [moip](https://pypi.org/project/moip/) providing asyncronous requests.
 
 ## Usage
