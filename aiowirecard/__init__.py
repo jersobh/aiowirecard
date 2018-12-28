@@ -1,6 +1,4 @@
 import json
-from copy import copy
-import asyncio
 import requests
 
 
