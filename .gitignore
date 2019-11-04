@@ -2,3 +2,4 @@
 dist/
 build/
 aiowirecard.egg-info/
+aiowirecard/__pycache__/
