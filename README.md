@@ -3,7 +3,10 @@
 Asyncio wirecard API wrapper based on [moip](https://pypi.org/project/moip/) providing asyncronous requests.
 
 ## Usage
-
+```bash
+$ export WIRECARD_KEY=<your_wirecard_key>
+$ export WIRECARD_TOKEN=<your_wirecard_token>
+```
 ```python
 import aiowirecard
 import aiohttp
