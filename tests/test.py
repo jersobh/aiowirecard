@@ -1,8 +1,10 @@
-import aiowirecard
 import asyncio
 import json
-import random
 import os
+import random
+
+import aiowirecard
+
 
 async def main():
     wirecard = aiowirecard.Wirecard(environment='sandbox', key=os.environ['WIRECARD_KEY'],

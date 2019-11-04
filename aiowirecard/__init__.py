@@ -1,6 +1,6 @@
 import json
-import aiohttp
 import asyncio
+import aiohttp
 
 
 class Wirecard(object):
@@ -66,8 +66,8 @@ class Wirecard(object):
         try:
             async with aiohttp.ClientSession() as client:
                 async with client.delete(
-                '{0}/v2/fundinginstruments/{1}'.format(self.base_url,
-                                                       creditcard_id),
+                        '{0}/v2/fundinginstruments/{1}'.format(self.base_url,
+                                                               creditcard_id),
                         auth=(self.token, self.key)) as response:
                     return response.status
         except Exception as error:
