@@ -1,6 +1,6 @@
 import json
-import aiohttp
 import asyncio
+import aiohttp
 
 
 class Wirecard(object):
@@ -15,35 +15,38 @@ class Wirecard(object):
             self.base_url = 'https://sandbox.moip.com.br'
 
     async def get(self, url, parameters=None):
+        auth = aiohttp.BasicAuth(self.token, self.key, 'utf-8')
         async with aiohttp.ClientSession() as client:
             async with client.get('{0}/{1}'.format(self.base_url, url),
-                                params=parameters,
-                                auth=(self.token, self.key)) as response:
-                return response
+                                  params=parameters,
+                                  auth=auth) as response:
+                assert response.status == 200
+                return await response.text()
 
-    async def post(self, url, parameters=None):
+    async def post(self, url, status=200, parameters=None):
         headers = {
             'Content-type': 'application/json; charset="UTF-8"',
         }
-
         async with aiohttp.ClientSession() as client:
+            auth = aiohttp.BasicAuth(self.token, self.key, 'utf-8')
             async with client.post('{0}/{1}'.format(self.base_url, url),
                                    data=json.dumps(parameters),
                                    headers=headers,
-                                   auth=(self.token, self.key)) as response:
-                return response
+                                   auth=auth) as response:
+                assert response.status == status
+                return await response.text()
 
     async def post_customer(self, parameters):
         try:
-            response = await self.post('v2/customers', parameters=parameters)
-            return response.text()
+            response = await self.post('v2/customers', status=201, parameters=parameters)
+            return response
         except Exception as error:
-            print(json.dumps({"status": "error", "message": error}))
+            print(json.dumps({"status": "error", "message": str(error)}))
 
     async def get_customer(self, customer_id):
         try:
             response = await self.get('v2/customers/{0}'.format(customer_id))
-            return response.text()
+            return response
         except Exception as error:
             print(json.dumps({"status": "error", "message": error}))
 
@@ -51,13 +54,11 @@ class Wirecard(object):
         try:
             response = await self.post(
                 'v2/customers/{0}/fundinginstruments'.format(customer_id),
+                status=201,
                 parameters=parameters
             )
-            if response.status == 201:
-                data = json.loads(response.text())
-                return data['creditCard']['id']
-            else:
-                return response.text()
+            data = json.loads(response)
+            return data['creditCard']['id']
         except Exception as error:
             print(json.dumps({"status": "error", "message": error}))
 
@@ -65,8 +66,8 @@ class Wirecard(object):
         try:
             async with aiohttp.ClientSession() as client:
                 async with client.delete(
-                '{0}/v2/fundinginstruments/{1}'.format(self.base_url,
-                                                       creditcard_id),
+                        '{0}/v2/fundinginstruments/{1}'.format(self.base_url,
+                                                               creditcard_id),
                         auth=(self.token, self.key)) as response:
                     return response.status
         except Exception as error:
@@ -74,16 +75,15 @@ class Wirecard(object):
 
     async def post_order(self, parameters):
         try:
-            response = await self.post('v2/orders', parameters=parameters)
-            if response.status == 201:
-                return response.text()
+            response = await self.post('v2/orders', status=201, parameters=parameters)
+            return response
         except Exception as error:
             print(json.dumps({"status": "error", "message": error}))
 
     async def get_order(self, order_id):
         try:
             response = await self.get('v2/orders/{0}'.format(order_id))
-            return response.text()
+            return response
         except Exception as error:
             print(json.dumps({"status": "error", "message": error}))
 
@@ -96,8 +96,11 @@ class Wirecard(object):
             print(json.dumps({"status": "error", "message": error}))
 
     async def get_payment(self, payment_id):
-        response = await self.get('v2/payments/{0}'.format(payment_id))
-        return response.text()
+        try:
+            response = await self.get('v2/payments/{0}'.format(payment_id))
+            return response
+        except Exception as error:
+            print(json.dumps({"status": "error", "message": error}))
 
     async def capture_payment(self, payment_id):
         try:
